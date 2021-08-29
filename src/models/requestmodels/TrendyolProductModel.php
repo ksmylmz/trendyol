@@ -1,9 +1,8 @@
 <?php
 namespace ksmylmz\trendyol\models\requestmodels;
 
-use yii\base\Model;
 
-class TrendyolProductModel extends Model
+class TrendyolProductModel 
 {    
     /**
      * barcode

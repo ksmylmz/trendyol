@@ -1,7 +1,6 @@
 <?php
 namespace ksmylmz\trendyol\service;
 
-use yii\helpers\Json;
 use ksmylmz\trendyol\config\Endpoints;
 use ksmylmz\trendyol\models\requestmodels\CreateUpdateRequestProductModel;
 
@@ -33,7 +32,7 @@ class ProductService extends TrendyolBaseService
         //TODO: if(!$orderRequest->validate()) throw new \Exception($orderRequest->errors);
         $endpoint  = $this->getUrl(Endpoints::version."/".Endpoints::createProducts);
         $method = $isUpdate?"PUT":"POST";
-        $payload = ['body'=> Json::encode($productRequest)];        
+        $payload = ['body'=> \json_encode($productRequest)];        
         return $this->request($method,$endpoint,$payload);
     }
     
@@ -110,7 +109,7 @@ class ProductService extends TrendyolBaseService
     public function updateStockAndPriceTransfer($listOfStockAndPriceItems)
     {
         $endpoint  = $this->getUrl(Endpoints::priceAndInventory);
-        $payload = ['body'=> Json::encode(["items"=>$listOfStockAndPriceItems])];        
+        $payload = ['body'=> \json_encode(["items"=>$listOfStockAndPriceItems])];        
         return $this->request("POST",$endpoint,$payload);
     }
     

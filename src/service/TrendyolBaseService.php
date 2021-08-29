@@ -1,7 +1,6 @@
 <?php
 namespace ksmylmz\trendyol\service;
 
-use yii\helpers\Json;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Message;
 use ksmylmz\trendyol\config\Endpoints;
@@ -76,7 +75,7 @@ class TrendyolBaseService
             $_response = $this->client->request($method, $uri, $options);
             $baseresponse->status=true;
             $baseresponse->statusCode=$_response->getStatusCode();
-            $baseresponse->response=Json::decode($_response->getBody()->getContents());
+            $baseresponse->response=\json_decode($_response->getBody()->getContents());
         } catch (RequestException $e) 
         {
             $baseresponse->status=false;
@@ -84,7 +83,7 @@ class TrendyolBaseService
             $baseresponse->errorMessage= $e->getMessage();
             if($e->hasResponse())
             {
-                $baseresponse->response =$e->getResponse()->getBody(); //Json::decode($e->getResponse()->getBody());
+                $baseresponse->response =$e->getResponse()->getBody(); 
             }
 
         }finally

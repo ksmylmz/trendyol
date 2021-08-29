@@ -1,9 +1,8 @@
 <?php
 namespace ksmylmz\trendyol\models\requestmodels;
 
-use yii\base\Model;
 
-class OrderRequestModel extends Model
+class OrderRequestModel 
 {    
 
     /**

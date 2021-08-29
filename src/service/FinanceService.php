@@ -1,7 +1,7 @@
 <?php
 namespace ksmylmz\trendyol\service;
 
-use yii\helpers\Json;
+
 use GuzzleHttp\Client;
 use ksmylmz\trendyol\config\Endpoints;
 use GuzzleHttp\Exception\RequestException;
@@ -55,7 +55,7 @@ class FinanceService extends TrendyolBaseService
             $_response = $financeClient->request($method, $uri, $options);
             $response->status=true;
             $response->statusCode=$_response->getStatusCode();
-            $response->response=Json::decode($_response->getBody());
+            $response->response=\json_decode($_response->getBody());
         } catch (RequestException $e) 
         {
             $response->status=false;

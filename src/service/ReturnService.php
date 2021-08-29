@@ -1,7 +1,6 @@
 <?php
 namespace ksmylmz\trendyol\service;
 
-use yii\helpers\Json;
 use ksmylmz\trendyol\config\Endpoints;
 use ksmylmz\trendyol\models\requestmodels\ClaimRequestModel;
 use ksmylmz\trendyol\models\basemodels\TrendyolBaseResponseModel;
@@ -21,7 +20,6 @@ class ReturnService extends TrendyolBaseService
     {
         try
         {               
-            if(!$claimRequest->validate()) throw new \Exception($claimRequest->errors);
             $querystringParameters=[];
             foreach ($claimRequest as $key => $value) 
             {
@@ -52,7 +50,7 @@ class ReturnService extends TrendyolBaseService
     public function createClaim(ClaimCreateRequestModel $claim)
     {
         $endpoint = $this->getUrl(Endpoints::claimsCreate);
-        $payload = ["body"=>json_encode($claim)];
+        $payload = ["body"=>\json_encode($claim)];
         return $this->request("POST",$endpoint,$payload);
     }    
     /**
@@ -75,7 +73,7 @@ class ReturnService extends TrendyolBaseService
     public function approveClaim($claimId,ClaimApproveRequestModel $claimApproveRequest)
     {
         $endpoint = $this->getUrlWithoutSuppliers(str_replace("@claimId",$claimId,Endpoints::claimApprove));
-        $payload = ["body"=>json_encode($claimApproveRequest)];
+        $payload = ["body"=>\json_encode($claimApproveRequest)];
         return $this->request("PUT",$endpoint,$payload);
     }    
     /**

@@ -1,7 +1,6 @@
 <?php
 namespace ksmylmz\trendyol\models\requests\invoices;
 
-use yii\helpers\Json;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\RequestException;
@@ -20,7 +19,7 @@ class TrendyolRequestException extends RequestException
         parent::__construct($message,$request,$response,$previous,$handlerContext);
         if($this->hasResponse())
         {
-            $body =Json::decode($this->getResponse()->getBody());
+            $body =\json_decode($this->getResponse()->getBody());
             foreach ($body as $key => $errorLine) {
                 $this->_errorMessages[]= $errorLine->message;
             }

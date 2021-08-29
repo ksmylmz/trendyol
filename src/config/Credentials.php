@@ -1,9 +1,9 @@
 <?php
 namespace ksmylmz\trendyol\config;
 
-use yii\base\Model;
 
-class Credentials extends Model
+
+class Credentials 
 {
     /**
      * Trendyol web servisine bağnatı için gerekli

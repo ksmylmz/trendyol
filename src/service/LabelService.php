@@ -1,7 +1,7 @@
 <?php
 namespace ksmylmz\trendyol\service;
 
-use yii\helpers\Json;
+
 use ksmylmz\trendyol\config\Endpoints;
 use stdClass;
 
@@ -19,7 +19,7 @@ class LabelService extends TrendyolBaseService
         $endpoint = $this->getUrl(str_replace("@cargoTrackingNumber",$trackingNumber,Endpoints::createLabel));
         $label = new stdClass();
         $label->boxQuantity = $boxQuantity;
-        $payload = ["body"=>json_encode($label)];
+        $payload = ["body"=>\json_encode($label)];
         return $this->request("POST",$endpoint,$payload);
     }
     public function getLabel($trackingNumber)

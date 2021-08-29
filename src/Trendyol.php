@@ -9,9 +9,8 @@
  */
 namespace ksmylmz\trendyol;
 
-use yii\base\Component;
 use ksmylmz\trendyol\config\Credentials;
-class Trendyol extends Component
+class Trendyol 
 {
     public $product;
     public $order;
@@ -23,19 +22,18 @@ class Trendyol extends Component
     public $password;
     public $supplierId;
     public $isTestStage;
-    function init()
+    public function __construct($username,$password,$supplierId,$isTestStage=true)
     {    
-        $credentials = new Credentials([
-            'username'=>$this->username,
-            'password'=>$this->password,
-            'supplierId'=>$this->supplierId
-        ]);
-        $this->product  = new \ksmylmz\trendyol\service\ProductService($this->isTestStage,$credentials);
-        $this->order  = new \ksmylmz\trendyol\service\OrderService($this->isTestStage,$credentials);
-        $this->return  = new \ksmylmz\trendyol\service\ReturnService($this->isTestStage,$credentials);
-        $this->question  = new \ksmylmz\trendyol\service\QuestionService($this->isTestStage,$credentials);
-        $this->finance  = new \ksmylmz\trendyol\service\FinanceService($this->isTestStage,$credentials);
-        $this->label = new \ksmylmz\trendyol\service\LabelService($this->isTestStage,$credentials);
+        $credentials = new Credentials();
+        $credentials->username=$username;
+        $credentials->password=$password;
+        $credentials->supplierId=$supplierId;
+        $this->product  = new \ksmylmz\trendyol\service\ProductService($isTestStage,$credentials);
+        $this->order  = new \ksmylmz\trendyol\service\OrderService($isTestStage,$credentials);
+        $this->return  = new \ksmylmz\trendyol\service\ReturnService($isTestStage,$credentials);
+        $this->question  = new \ksmylmz\trendyol\service\QuestionService($isTestStage,$credentials);
+        $this->finance  = new \ksmylmz\trendyol\service\FinanceService($isTestStage,$credentials);
+        $this->label = new \ksmylmz\trendyol\service\LabelService($isTestStage,$credentials);
     }
 
     

@@ -1,7 +1,7 @@
 <?php
 namespace ksmylmz\trendyol\service;
 
-use yii\helpers\Json;
+
 use ksmylmz\trendyol\config\Endpoints;
 use ksmylmz\trendyol\models\basemodels\OrderStatus;
 use ksmylmz\trendyol\models\basemodels\DirectionType;
@@ -57,7 +57,7 @@ class OrderService extends TrendyolBaseService
     {
         $endpoint = $this->getUrl(str_replace("@shipmentPackageId",$shipmentPackageId,Endpoints::updateShippingCode));
     
-        $payload = ["body"=>Json::encode(new UpdateCargoTrackingModel(["trackingNumber"=>$trackingNo]))];
+        $payload = ["body"=>\json_encode(new UpdateCargoTrackingModel(["trackingNumber"=>$trackingNo]))];
         return $this->request("PUT",$endpoint,$payload);
     }    
     /**
@@ -70,7 +70,7 @@ class OrderService extends TrendyolBaseService
     public function updatePackageStatus($shipmentPackageId, PackageStatusUpdateRequestModel $packageStatusUpdateRequestModel)
     {
         $endpoint = $this->getUrl(str_replace("@Id",$shipmentPackageId,Endpoints::updatePackageStatus));
-        $payload = ["body"=>json_encode($packageStatusUpdateRequestModel)];
+        $payload = ["body"=>\json_encode($packageStatusUpdateRequestModel)];
         return $this->request("PUT",$endpoint,$payload);
     }    
     /**
@@ -82,7 +82,7 @@ class OrderService extends TrendyolBaseService
     public function sendInvoiceLink(SendInvoiceLinkRequestModel $invoiceRequest)
     {
         $endpoint = $this->getUrl(Endpoints::sendInvoiceLinks);
-        $payload = ["body"=>json_encode($invoiceRequest)];
+        $payload = ["body"=>\json_encode($invoiceRequest)];
         return $this->request("POST",$endpoint,$payload);
     }    
     /**
@@ -95,7 +95,7 @@ class OrderService extends TrendyolBaseService
     public function splitOrderPackage($shipmentPackageId,OrderSplitRequestModel $invoiceRequest)
     {
         $endpoint = $this->getUrl(str_replace("@shipmentPackageId",$shipmentPackageId,Endpoints::splitPackages));
-        $payload = ["body"=>json_encode($invoiceRequest)];
+        $payload = ["body"=>\json_encode($invoiceRequest)];
         return $this->request("POST",$endpoint,$payload);
     }    
     /**
@@ -109,7 +109,7 @@ class OrderService extends TrendyolBaseService
     public function changeCargoCompany($shipmentPackageId, $cargoCompany)
     {
         $endpoint = $this->getUrl(str_replace("@shipmentPackageId",$shipmentPackageId,Endpoints::changeCargoProviders));
-        $payload = ["body"=>json_encode(["cargoProvider"=>$cargoCompany])];
+        $payload = ["body"=>\json_encode(["cargoProvider"=>$cargoCompany])];
         return $this->request("PUT",$endpoint,$payload);
     }
 }

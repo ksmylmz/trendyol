@@ -1,9 +1,8 @@
 <?php
 namespace ksmylmz\trendyol\models\basemodels;
 
-use yii\base\Model;
 
-class Attribute extends Model
+class Attribute 
 {    
     /**
      * attributeId

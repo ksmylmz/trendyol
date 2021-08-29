@@ -1,9 +1,7 @@
 <?php
 namespace ksmylmz\trendyol\models\requestmodels;
 
-use yii\base\Model;
-
-class ClaimCreateRequestModel extends Model
+class ClaimCreateRequestModel extends 
 {    
     /**
      * claimItems

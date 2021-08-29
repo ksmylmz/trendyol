@@ -1,9 +1,9 @@
 <?php
 namespace ksmylmz\trendyol\models\requestmodels;
 
-use yii\base\Model;
 
-class SettlementRequestModel extends Model
+
+class SettlementRequestModel  
 {
 /**
      * startDate
