@@ -5,33 +5,27 @@ Trendyol Servis Modülü
 Trendyol WEb Servisi ile iletişim katmanı özelliği olan bu 
 servis hazırlanırken [Trendyol Resmi dökümanyasyon](https://developers.trendyol.com/tr)unndan faydalanılmıştır
 
-Modül Yii2 frameworkü için component olarka hazırlanmışır. 
 request işlemleri için Guzzle Kullanılmıştır. 
+psr-4 standartlarına uyan her hangi bir yapı ile birlikte 
+kullanılabilir. 
 
 ## Kurulum 
 ________
 
 
-### 1- Component olarka ekleme 
-````php
-    'components' => [
-        ......
-        'trendyol' => [
-            'class' => 'ksmylmz\trendyol\Trendyol',
-            'username'=>"{$username}", //trendyol tarafından sağlanan kullanıcı adı
-            'password'=>"{$password}",//trendyol tarafından sağlanan şifre
-            'supplierId'=>"{$supplierID}" ////trendyol tarafından sağlanan supplier id 
-            'isTestStage' => true, ///prod için false
-        ]
-        ......
-    ],
+### 1- 
+````
+    composer require ksmylmz/trendyol
 ````
 
 
 ### 2- Örnek Kullanım
 
 ````php
-    $trendyol  = Yii::$app->trendyol;
+   use ksmylmz\trendyol\Trendyol;
+    ......
+    $isTeststage = true;
+    $trendyol  = new Trendyol({username},{password},{merchantid},$isTestStage);
     $response = $trendyol->product->productFilter(10,20);
     var_dump($response);
 ````
