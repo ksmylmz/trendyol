@@ -1,7 +1,6 @@
 {
     "name": "ksmylmz/trendyol",
     "description": "Trendyol Entegrasyon Servisleri",
-    "type": "composer-plugin",
     "keywords": ["trendyol","marketplace integration"],
     "license": "MIT",
     "authors": [
