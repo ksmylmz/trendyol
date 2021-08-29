@@ -13,7 +13,10 @@ _____________________
 ### 1- Init Object for Usage
 
 ````php
-$trendyol  = Yii::$app->trendyol;
+   use ksmylmz\trendyol\Trendyol;
+    ......
+    $isTeststage = true;
+    $trendyol  = new Trendyol({username},{password},{merchantid},$isTestStage);
 ````
 
 
